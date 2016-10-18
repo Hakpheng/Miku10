@@ -1,0 +1,113 @@
+package ManUtd;
+
+import javax.naming.spi.DirStateFactory.Result;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class StudentInfo {
+	
+	private int ID;
+	private String name;
+	private String sex;
+	private String day;
+	private String month;
+	private String year;
+	
+	JTextField txtID= new JTextField();
+	JTextField txtName= new JTextField();
+	JTextField txtSex = new JTextField();
+	JTextField txtDay= new JTextField();
+	JTextField txtMonth= new JTextField();
+	JTextField txtYear = new JTextField();
+	
+	Object[] obj=
+	{
+			"Enter Id: ",txtID,
+			"Enter Name: ",txtName,
+			"Enter Sex: ",txtSex,
+			"Enter Day: ",txtDay,
+			"Enter Month: ",txtMonth,
+			"Enter Year: ",txtYear
+	};
+	void Input()
+	{	
+	JOptionPane.showConfirmDialog(null, obj,"Input Student Information",JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);	
+		ID=Integer.parseInt(txtID.getText());
+		name=txtName.getText();
+		sex=txtSex.getText();
+		
+	}
+	
+	String Output(){
+
+		String st="";
+		st+=ID+"\t"+name+"\t"+sex+"\t";
+		
+		return st;
+	}	
+	
+DOB dob= new DOB();		
+	
+class DOB{
+	
+/*	private String day;
+	private String month;
+	private String year;
+	
+	JTextField txtDay= new JTextField();
+	JTextField txtMonth= new JTextField();
+	JTextField txtYear = new JTextField();
+
+	Object[] obj=
+	{
+			"Enter Day: ",txtDay,
+			"Enter Month: ",txtMonth,
+			"Enter Year: ",txtYear
+	}; */
+	void Input()
+	{	
+	JOptionPane.showConfirmDialog(null, obj,"Input Book Information",JOptionPane.OK_CANCEL_OPTION,JOptionPane.PLAIN_MESSAGE);	
+		day=txtDay.getText();
+		month=txtMonth.getText();
+		year=txtYear.getText();
+		
+	}
+	
+	String Output(){
+
+		String st="";
+		st+=day+"\t"+month+"\t"+year+"\t";
+		
+		return st;
+	}	
+	
+}	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+int n=Integer.parseInt(JOptionPane.showInputDialog("Enter N:"));
+	StudentInfo[] st= new StudentInfo[n];
+	String result=" ";
+	
+	for(int i=0;i<n;i++)
+	{
+		st[i]= new StudentInfo();
+		
+	    st[i].Input();
+		st[i].dob.Input();
+	
+	}
+	
+	for(int i=0;i<n;i++)
+	{
+		result+= st[i].Output();
+		result+= st[i].dob.Output();
+	}	
+	JTextArea jt=new JTextArea(result);
+	JOptionPane.showMessageDialog(null, jt,"Result",JOptionPane.PLAIN_MESSAGE);
+	}
+
+	
+	
+}
